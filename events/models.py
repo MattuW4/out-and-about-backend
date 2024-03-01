@@ -39,8 +39,13 @@ class Event(models.Model):
     title = models.CharField(max_length=225)
     event_date = models.DateField(blank=False)
     description = models.TextField(blank=True)
-    category = models.CharField(max_length=50, choices=EVENT_CATEGORIES, default='Music')
-    image = models.ImageField(upload_to='images/', default='../default_post_mpxuln', blank=True) 
+    category = models.CharField(
+        max_length=50, choices=EVENT_CATEGORIES, default='Music')
+    image = models.ImageField(
+        upload_to='images/', default='../default_post_mpxuln', blank=True)
+    image_filter = models.CharField(
+        max_length=32, choices=image_filter_choices, default='normal'
+    )
 
     class Meta:
         ordering = ['-created_at']
