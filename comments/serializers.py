@@ -2,6 +2,9 @@ from rest_framework import serializers
 from .models import Comment
 
 class CommentSerializer():
+    """
+    Serializer for the comment model
+    """
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
@@ -17,3 +20,9 @@ class CommentSerializer():
             'id', 'owner', 'is_owner', 'profile_id', 'profile_image',
             'event', 'created_at', 'updated_at', 'content'
         ]
+        
+class CommentDetailSerializer(CommentSerializer):
+    """
+    Serializer for the comment model detail
+    """
+    event = serializers.ReadOnlyField(source='event.id')
