@@ -35,6 +35,9 @@ class EventListViewTests(APITestCase):
         self.assertEqual(count, 0)
         
 class EventDetailViewTests(APITestCase):
+    """
+    Tests for event model detail view
+    """
     def setUp(self):
         matt = User.objects.create_user(username='matt', password='passw')
         kaitlin = User.objects.create_user(username='kaitlin', password='passw')
