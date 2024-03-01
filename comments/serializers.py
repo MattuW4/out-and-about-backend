@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import Comment
 
-class CommentSerializer():
+class CommentSerializer(serializers.ModelSerializer):
     """
     Serializer for the comment model
     """
