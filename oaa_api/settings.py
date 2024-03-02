@@ -67,6 +67,7 @@ DEBUG = 'DEV' in os.environ
 ALLOWED_HOSTS = ['localhost', 
                  '8000-mattuw4-outandaboutback-wemrfgif75z.ws-eu108.gitpod.io',
                  'oaa-app.herokuapp.com',
+                 '*',
                 ]
 
 
