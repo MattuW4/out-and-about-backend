@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from django.utils.dateformat import format
-from .models import Event 
+from .models import Event
+from attending.models import Attend
 
 class EventSerializer(serializers.ModelSerializer):
     """
@@ -12,6 +13,7 @@ class EventSerializer(serializers.ModelSerializer):
     profile_image = serializers.ReadOnlyField(
         source='owner.profile.image.url'
     )
+    attend_id = serializers.SerializerMethodField()
     
     def validate_image(self, value):
         if value.size > 1024 * 1024 *2:
@@ -32,11 +34,20 @@ class EventSerializer(serializers.ModelSerializer):
         request = self.context['request']
         return request.user == obj.owner
     
+    def get_attend_id(self, obj):
+        user = self.context['request'].user
+        if user.is_authenticated:
+            attend = Attend.objects.filter(
+                owner=user, event=obj
+            ).first()
+            return attend.id if attend else None
+        return None
+    
     class Meta:
         model = Event
         fields = [
             'id', 'owner', 'is_owner', 'profile_id','title',
             'description', 'category', 'created_at','updated_at', 
             'event_date', 'profile_image', 'image', 'event_date',
-            'category','image_filter',
+            'category','image_filter', 'attend_id',
         ]
