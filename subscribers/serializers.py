@@ -2,7 +2,7 @@ from rest_framework import serializers
 from .models import Subscriber
 from django.db import IntegrityError
 
-class SubscriberSerializer(serializers.ModelSerializer):
+class SubscribersSerializer(serializers.ModelSerializer):
     """
     Serializer for the Subscriber model
     Create method handles the unique constraint on 'owner' and 'subscribed'
