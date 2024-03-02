@@ -3,7 +3,7 @@ from rest_framework import serializers
 from .models import Attend
 
 
-class CommentSerializer(serializers.ModelSerializer):
+class AttendSerializer(serializers.ModelSerializer):
     """
     Serializer for the attend model
     """
