@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'profiles',
     'events',
     'comments',
+    'attending',
 ]
 
 MIDDLEWARE = [
