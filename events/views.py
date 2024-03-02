@@ -1,4 +1,5 @@
-from rest_framework import generics, permissions
+from rest_framework import generics, permissions, filters
+from django.db.models import Count
 from .models import Event
 from .serializers import EventSerializer
 from oaa_api.permissions import IsOwnerOrReadOnly
@@ -10,7 +11,24 @@ class EventList(generics.ListCreateAPIView):
     """
     serializer_class = EventSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    queryset = Event.objects.all()
+    queryset = Event.objects.annotate(
+        comments_count=Count('comment', distinct=True),
+        attending_count=Count('attending', distinct=True),
+    ).order_by('-created_at')
+    filter_backends = [
+        filters.OrderingFilter,
+        filters.SearchFilter,
+    ]
+    search_fields = [
+        'owner__username',
+        'title',
+        'event_date',
+    ]
+    ordering_fields = [    
+        'comments_count',
+        'attending_count',
+        'attending__created_at',
+    ]
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)

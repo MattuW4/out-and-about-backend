@@ -14,6 +14,8 @@ class EventSerializer(serializers.ModelSerializer):
         source='owner.profile.image.url'
     )
     attend_id = serializers.SerializerMethodField()
+    comments_count = serializers.ReadOnlyField()
+    attending_count = serializers.ReadOnlyField()
     
     def validate_image(self, value):
         if value.size > 1024 * 1024 *2:
@@ -49,5 +51,6 @@ class EventSerializer(serializers.ModelSerializer):
             'id', 'owner', 'is_owner', 'profile_id','title',
             'description', 'category', 'created_at','updated_at', 
             'event_date', 'profile_image', 'image', 'event_date',
-            'category','image_filter', 'attend_id',
+            'category','image_filter', 'attend_id', 'comments_count',
+            'attending_count',
         ]
