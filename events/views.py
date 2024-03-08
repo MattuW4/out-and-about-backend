@@ -46,4 +46,7 @@ class EventDetail(generics.RetrieveUpdateDestroyAPIView):
     """
     serializer_class = EventSerializer
     permission_classes = [IsOwnerOrReadOnly]
-    queryset = Event.objects.all()
+    queryset = Event.objects.annotate(
+        attending_count=Count('attending', distinct=True),
+        comments_count=Count('comment', distinct=True)
+    ).order_by('-created_at')
