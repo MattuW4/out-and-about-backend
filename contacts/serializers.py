@@ -35,8 +35,7 @@ class ContactSerializer(serializers.ModelSerializer):
         fields = [
             "id",
             "owner",
-            "reason",
-            "content",
+            "message",
             "profile_id",
             "profile_image",
             "created_at",
