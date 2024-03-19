@@ -32,4 +32,5 @@ urlpatterns = [
     path('', include('attending.urls')),
     path('', include('subscribers.urls')),
     path('', include('reviews.urls')),
+    path('', include('contacts.urls')),
 ]
