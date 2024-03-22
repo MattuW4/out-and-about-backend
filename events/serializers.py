@@ -18,6 +18,7 @@ class EventSerializer(serializers.ModelSerializer):
     attending_count = serializers.ReadOnlyField()
     reviews_count = serializers.ReadOnlyField()
     average_rating = serializers.ReadOnlyField()
+    review_id = serializers.SerializerMethodField()
     
     def validate_image(self, value):
         if value.size > 1024 * 1024 *2:
@@ -45,6 +46,15 @@ class EventSerializer(serializers.ModelSerializer):
                 owner=user, event=obj
             ).first()
             return attend.id if attend else None
+        return None
+    
+    def get_review_id(self, obj):
+        user = self.context['request'].user
+        if user.is_authenticated:
+            review = Review.objects.filter(
+                owner=user, event=obj
+            ).first()
+            return review.id if review else None
         return None
     
     class Meta:
