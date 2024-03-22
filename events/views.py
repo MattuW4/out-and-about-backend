@@ -1,6 +1,6 @@
 from rest_framework import generics, permissions, filters
 from django_filters.rest_framework import DjangoFilterBackend
-from django.db.models import Count
+from django.db.models import Count, Avg
 from .models import Event
 from .serializers import EventSerializer
 from oaa_api.permissions import IsOwnerOrReadOnly
@@ -16,6 +16,7 @@ class EventList(generics.ListCreateAPIView):
         comments_count=Count('comment', distinct=True),
         attending_count=Count('attending', distinct=True),
         reviews_count=Count('reviews', distinct=True),
+        average_rating=Avg('reviews__rating', distinct=True),
     ).order_by('-created_at')
     filter_backends = [
         filters.OrderingFilter,
@@ -38,6 +39,7 @@ class EventList(generics.ListCreateAPIView):
         'comments_count',
         'attending_count',
         'attending__created_at',
+        'average_rating',
     ]
 
     def perform_create(self, serializer):
@@ -53,4 +55,5 @@ class EventDetail(generics.RetrieveUpdateDestroyAPIView):
         attending_count=Count('attending', distinct=True),
         comments_count=Count('comment', distinct=True),
         reviews_count=Count('reviews', distinct=True),
+        average_rating=Avg('reviews__rating', distinct=True),
     ).order_by('-created_at')
