@@ -65,5 +65,5 @@ class EventSerializer(serializers.ModelSerializer):
             'event_date', 'profile_image', 'image', 'event_date',
             'category','image_filter', 'attend_id', 'comments_count',
             'attending_count', 'reviews_count', 'average_rating',
-            'review_id,'
+            'review_id',
         ]
