@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from django.utils.dateformat import format
 from .models import Event
+from reviews.models import Review
 from attending.models import Attend
 
 class EventSerializer(serializers.ModelSerializer):
