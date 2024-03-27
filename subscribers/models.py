@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class Subscriber(models.Model):
     """
     Subscriber model, related to 'owner' and 'subscribed'.

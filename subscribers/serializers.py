@@ -2,6 +2,7 @@ from rest_framework import serializers
 from .models import Subscriber
 from django.db import IntegrityError
 
+
 class SubscribersSerializer(serializers.ModelSerializer):
     """
     Serializer for the Subscriber model
@@ -15,7 +16,7 @@ class SubscribersSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'owner', 'subscribed_name', 'subscribed', 'created_at'
         ]
-        
+
     def create(self, validated_data):
         try:
             return super().create(validated_data)

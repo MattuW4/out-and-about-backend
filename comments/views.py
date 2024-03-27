@@ -4,6 +4,7 @@ from oaa_api.permissions import IsOwnerOrReadOnly
 from .models import Comment
 from .serializers import CommentSerializer, CommentDetailSerializer
 
+
 class CommentList(generics.ListCreateAPIView):
     """
     List or create a comment if logged in
@@ -17,10 +18,11 @@ class CommentList(generics.ListCreateAPIView):
     filterset_fields = [
         'event',
     ]
-    
+
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
-        
+
+
 class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
     """
     Retrieve, update or delete a comment
@@ -28,4 +30,3 @@ class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = CommentDetailSerializer
     queryset = Comment.objects.all()
-    

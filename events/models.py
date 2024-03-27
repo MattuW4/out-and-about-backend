@@ -13,6 +13,7 @@ EVENT_CATEGORIES = (
     ("Soul/funk", "Soul/funk"),
 )
 
+
 class Event(models.Model):
     """Event model, related to 'owner', i.e. a User instance.
     Default image set so that we can always refrence image.url.
@@ -49,6 +50,6 @@ class Event(models.Model):
 
     class Meta:
         ordering = ['-created_at']
-        
+
     def __str__(self):
         return f'{self.id} {self.title}'

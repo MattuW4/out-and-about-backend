@@ -5,6 +5,7 @@ from .models import Event
 from .serializers import EventSerializer
 from oaa_api.permissions import IsOwnerOrReadOnly
 
+
 class EventList(generics.ListCreateAPIView):
     """
     List events or create an event if logged in user
@@ -35,7 +36,7 @@ class EventList(generics.ListCreateAPIView):
         'title',
         'event_date',
     ]
-    ordering_fields = [    
+    ordering_fields = [
         'comments_count',
         'attending_count',
         'attending__created_at',
@@ -44,7 +45,8 @@ class EventList(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
-        
+
+
 class EventDetail(generics.RetrieveUpdateDestroyAPIView):
     """
     Retrieve an event, or update or delete it by id if you own it.
