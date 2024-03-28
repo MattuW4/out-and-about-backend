@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import date
-from django_resized import ResizedImageField
 
 EVENT_CATEGORIES = (
     ("Music", "Music"),
@@ -43,9 +42,7 @@ class Event(models.Model):
     description = models.TextField(blank=True)
     category = models.CharField(
         max_length=50, choices=EVENT_CATEGORIES, default='Music')
-    image = ResizedImageField(
-        size=[300, 300], quality=75, upload_to='images/', force_format='WEBP',
-        default='../default_post_mpxuln', blank=True)
+    image = models.ImageField(blank=True, default='../default_post_mpxuln', upload_to='images/')
     image_filter = models.CharField(
         max_length=32, choices=image_filter_choices, default='normal'
     )

@@ -1,7 +1,6 @@
 from django.db import models
 from django.db.models.signals import post_save
 from django.contrib.auth.models import User
-from django_resized import ResizedImageField
 
 
 class Profile(models.Model):
@@ -10,9 +9,7 @@ class Profile(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     name = models.CharField(max_length=255, blank=True)
     content = models.TextField(blank=True)
-    image = ResizedImageField(
-        size=[300, 300], quality=75, upload_to='images/', force_format='WEBP',
-        default='../default_profile_gfyvrr', blank=True)
+    image = models.ImageField(blank=True, default='../default_profile_gfyvrr', upload_to='images/')
 
     class Meta:
         ordering = ['-created_at']
