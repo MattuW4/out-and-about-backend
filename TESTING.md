@@ -161,6 +161,8 @@ The following manual testing was carried out in addition to the automated testin
 
 ## Known Bugs
 
+None noted at time of app launch.
+
 ### Resolved
 
 1. When running APITestcase for events the tests kept failing with an Integrity Error: Not Null Constraint. It was realised that event_date was required with a placeholder as this is a required field. It was further realised that the date had to be YYYY-MM-DD in order for the tests to build and pass.
