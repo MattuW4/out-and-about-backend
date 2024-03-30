@@ -11,7 +11,7 @@
   * [Models](#models)
 - [Features](#features)
 - [Agile Workflow](#agile-workflow)
-  * [Kanban Board](#kanbab-board)
+  * [Kanban Board](#kanban-board)
 - [Testing](#testing)
 - [Deployment](#deployment)
 - [Credits](#credits)
@@ -106,7 +106,7 @@ The user stories below indicate the grouping of epics linked to an area as well 
 + As a developer I can view a list of comments linked to an event so that I can view comments relating to a specific event id
 + As a developer I can view a list of reviews linked to an event so that I can see the reviews relating to a specific event id
 
-# Database Designs
+# Database Design
 
 ## Models
 
@@ -215,7 +215,7 @@ The project was deployed to [Heroku](https://www.heroku.com). Follow the steps b
 
 # # Repository
 
-1.Create a GitHub repository from the [Code Institute template](https://github.com/Code-Institute-Org/gitpod-full-template) by following the link and then selecting 'Use this template'.
+1. Create a GitHub repository from the [Code Institute template](https://github.com/Code-Institute-Org/gitpod-full-template) by following the link and then selecting 'Use this template'.
 
 2. Fill in details for new repository and click 'Create Repository From Template'.
 
@@ -334,7 +334,7 @@ To clone and set up this project you need to follow the steps below.
 
 3. Using an IDE and open Git Bash to create a new project. 
 
-4. Type 'git clone', and then paste the URL that you copied from GitHub. Press enter and a local clone will be created.
+4. Type 'git clone', and then paste the URL copied from GitHub. Press enter and a local clone will be created.
 
 # Credits
 
